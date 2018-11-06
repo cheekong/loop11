@@ -2,6 +2,7 @@
     z-index: 9999;
     position: absolute;
     width: 100%;
+    display: contents;
 }
 
 .dropbar__success {
