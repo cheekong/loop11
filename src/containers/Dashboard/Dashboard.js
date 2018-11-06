@@ -14,7 +14,8 @@ class Landing extends Component {
         selectedChannel: 'select',
         error: false,
         errorMessage: null,
-        success: false
+        success: false,
+        showDropBar: false
     }
 
     toggleModal(){
@@ -30,6 +31,12 @@ class Landing extends Component {
         });
     }
 
+    handleDropbarOnclick(){
+        this.setState({
+            showDropBar: false
+        });
+    }
+
     handleSubmit(){
         api.shareToChannel(this.state.selectedChannel)
         .then(res => {
@@ -37,7 +44,8 @@ class Landing extends Component {
                 this.setState({
                     success: true, 
                     showModal: false,
-                    selectedChannel: 'select'
+                    selectedChannel: 'select',
+                    showDropBar: true
                 });
             } else if (res.status === 200 && res.data.statusCode === 404){
                 this.setState({error: true, errorMessage: res.data.body.error});
@@ -79,9 +87,14 @@ class Landing extends Component {
                     disabled={this.state.selectedChannel === 'select'}/>
             );
         }
+
+        let dropbar = null;
+        if(this.state.showDropBar){
+            dropbar = <DropBar onClick={() => this.handleDropbarOnclick()}/>
+        }
         return(
             <div>
-                <DropBar />
+                {dropbar}
                 {modal}
                 <header>
                     <span className='loop11__logo'>
