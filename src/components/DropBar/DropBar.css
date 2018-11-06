@@ -1,0 +1,16 @@
+.drop__bar {
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+}
+
+.drop__success {
+    width: 840px;
+    height: 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border: solid 1px #2cbf9d;
+    background-color: #eafff6;
+    margin: 0 auto;
+    text-align: center;
+}

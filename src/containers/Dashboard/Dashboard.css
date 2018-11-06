@@ -1,0 +1,15 @@
+.loop11__logo {
+    margin: 30px 30px;
+    display: inline-flex;
+    align-items: left;
+}
+
+.landing {
+    height: 100%;
+    width: 100%;    
+}
+
+.cta__center {
+    margin-top: 15%;
+    text-align: center;
+}

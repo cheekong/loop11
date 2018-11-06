@@ -1,0 +1,36 @@
+.button {
+    width: 300px;
+    height: 46px;
+    border-radius: 2px;
+    background-color: #2cbf9d;
+    border: 0px;
+    font-size: 14px;
+    font-family: Lato;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.modal__button {
+    width: 352px;
+    height: 42px;
+    border-radius: 2px;
+    border: 0px;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    background-color: #2cbf9d;
+}
+
+.button--inactive {
+    opacity: 0.5;
+}
