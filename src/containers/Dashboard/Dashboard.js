@@ -25,7 +25,6 @@ class Landing extends Component {
     }
 
     handleChange(name){
-        console.log('name', name);
         this.setState({
             selectedChannel: name
         });
@@ -58,10 +57,8 @@ class Landing extends Component {
                     showTopBar: true
                 });
             }
-            console.log('res',res);
         })
         .catch( err => {
-            console.log('err',err);
             alert('Fatal error');
 
         })
@@ -70,7 +67,6 @@ class Landing extends Component {
     componentDidMount(){
         api.getChannelList()
         .then(res => {
-            console.log('res',res);
             if(res.status === 200 && res.data.statusCode === 200){
                 this.setState({channelList: res.data.channels})
             } else {

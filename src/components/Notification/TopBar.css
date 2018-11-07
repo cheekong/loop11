@@ -55,24 +55,12 @@
 
 
 .topbar__body {
-    font-family: Lato;
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
     line-height: 2;
-    letter-spacing: normal;
     text-align: center;
 }
 
-
-
 .topbar__icon {
     margin-right: 5px;
-}
-
-.topbar__message {
-
 }
 
 .topbar__close {

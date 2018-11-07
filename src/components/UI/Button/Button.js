@@ -4,7 +4,9 @@ import './Button.css';
 const Button = (props) => {
     let className = ['button'];
     if(props.modifier && props.modifier === 'modal'){
-        className = ['modal__button'];
+        className.push('modal');
+    } else {
+        className.push('regular');
     }
 
     if(props.disabled){

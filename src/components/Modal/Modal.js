@@ -29,11 +29,10 @@ class Modal extends Component {
             this.setState({
                 reserve: false
             })
-        }, 300);
+        }, 100);
     }
 
     render(){
-        console.log('this.props',this.props);
         let options = [];
         if(this.props.options.length){
             options = this.props.options.map((optionItem, idx) => {
@@ -42,7 +41,6 @@ class Modal extends Component {
                 )
             })
         }
-console.log('options', options);
         let modal = null;
         if(this.props.show) {
             let modalClassName = ['backdrop'];
@@ -53,48 +51,44 @@ console.log('options', options);
             modal = (
                 <div className={modalClassName}>
                     <div className='modal'>
-                        <div className='modal__header'>
-                            <div className='modal__text share__video__clip'>
-                                Share video clip
+                        <div className='modal__container '>
+                            <div className='modal__header'>
+                                <h2 className='modal__heading'>Share video clip</h2>
+                                <p className='modal__cancel' onClick={() => this.reserveModal()}><FontAwesomeIcon icon="times" /></p>
                             </div>
-                            <div className='modal__cancel'>
-                                <p className='action__cancel' onClick={() => this.reserveModal()}><FontAwesomeIcon icon="times" /></p>
-                            </div>
-                            <div style={{clear:'both'}} />
-                        </div>
-                        <div className='modal__body'>
-                            <p className='modal__text modal__title'>
-                                Select a slack channel
-                            </p>
-                            <p className='modal__text modal__description'>
-                                To Share this clip, add email addresses separated by commas, then click 'Send'.
-                            </p>
-                            <p className='modal__text'>
-                                <span className='video__clip__description'>Projects0001 Report / Task 2 / </span> 
-                                <span className='participant__description'>Partcipants 4</span>
-                                <br />
-                                
-                                <span className='font__awesome__icon'><FontAwesomeIcon icon="video" /></span><span className='participant__description'>Start:</span> <span className='video__clip__description'>2:30    </span>
-                                <span className='participant__description'>End</span> <span className='video__clip__description'> 2:30</span>
-                            </p>
-                            <div className='modal__cta'>
-                                <p>
-                                <select className='select'
-                                    onChange={(event) => this.props.onChange(event.target.value)}>
-                                    <option value='select'>Select</option>
-                                    {options}
-                                </select>
-                                </p>
-                                <span>
-                                    <Button 
-                                        modifier='modal'
-                                        label='Share with Slack'
-                                        disabled={this.props.disabled}
-                                        onClick={() => this.handleSubmit()}/>
-                                </span>
-                                
+                            <div className='modal__body'>
+                                <div className='modal__description'>
+                                    <h3>Select a slack channel</h3>
+                                    <p >
+                                        To Share this clip, add email addresses separated by commas, then click 'Send'.
+                                    </p>
+                                    <p>
+                                        <span className='video__clip__description'>Projects0001 Report / Task 2 / </span> 
+                                        <span className='participant__description'>Partcipants 4</span>
+                                        <br />
+                                        
+                                        <span className='font__awesome__icon'><FontAwesomeIcon icon="video" /></span><span className='participant__description'>Start:</span> <span className='video__clip__description'>2:30    </span>
+                                        <span className='participant__description'>End</span> <span className='video__clip__description'> 2:30</span>
+                                    </p>
+                                </div>
+                                <div className='modal__cta'>
+                                    <select className='select'
+                                        onChange={(event) => this.props.onChange(event.target.value)}>
+                                        <option value='select'>Select</option>
+                                        {options}
+                                    </select>
+                                    <span>
+                                        <Button 
+                                            modifier='modal'
+                                            label='Share with Slack'
+                                            disabled={this.props.disabled}
+                                            onClick={() => this.handleSubmit()}/>
+                                    </span>
+                                    
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             )
