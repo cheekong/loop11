@@ -1,0 +1,81 @@
+@keyframes topbarFade {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+  }
+
+@keyframes topbarReserve {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-50%);
+        opacity: 0;
+      }
+}
+
+.topbar {
+    z-index: 9999;
+    position: absolute;
+    width: 100%;
+    animation-name: topbarFade;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
+.topbar.reserve {
+    animation-name: topbarReserve;
+}
+
+.topbar__content {
+    width: 840px;
+    height: 60px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+.topbar__content.success {
+    border: solid 1px #2cbf9d;
+    background-color: #eafff6;
+    color: #2cbf9d;
+}
+
+.topbar__content.error {
+    border: solid 1px #bf2c2c;
+    background-color: #ffeaf1;
+    color: #bf2c2c;
+}
+
+
+.topbar__body {
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+
+
+.topbar__icon {
+    margin-right: 5px;
+}
+
+.topbar__message {
+
+}
+
+.topbar__close {
+    float: right;
+    text-indent: -60px;
+}

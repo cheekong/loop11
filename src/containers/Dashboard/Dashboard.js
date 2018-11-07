@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../../components/UI/Button/Button';
 import Modal from '../../components/Modal/Modal';
-import DropBar from '../../components/DropBar/DropBar';
+import TopBar from '../../components/Notification/TopBar';
 import * as api from '../../utilities/api';
 //import Logo from 'res/logo/loop-11-logo-green-copy.svg';
 import './Dashboard.css';
@@ -13,9 +13,9 @@ class Landing extends Component {
         channelList: [],
         selectedChannel: 'select',
         error: false,
-        errorMessage: null,
+        message: null,
         success: false,
-        showDropBar: false
+        showTopBar: false
     }
 
     toggleModal(){
@@ -31,9 +31,9 @@ class Landing extends Component {
         });
     }
 
-    handleDropbarOnclick(){
+    closeTopBar(){
         this.setState({
-            showDropBar: false
+            showTopBar: false
         });
     }
 
@@ -43,12 +43,20 @@ class Landing extends Component {
             if(res.status === 200 && res.data.statusCode === 200){
                 this.setState({
                     success: true, 
-                    showModal: false,
+                    //showModal: false,
                     selectedChannel: 'select',
-                    showDropBar: true
+                    error: false,
+                    message: 'Video clip shared with Slack!',
+                    showTopBar: true
                 });
             } else if (res.status === 200 && res.data.statusCode === 404){
-                this.setState({error: true, errorMessage: res.data.body.error});
+                this.setState({
+                    error: true, 
+                    message: res.data.body.error + '. Please try another option.',
+                    success: false,
+                    selectedChannel: 'select',
+                    showTopBar: true
+                });
             }
             console.log('res',res);
         })
@@ -75,27 +83,20 @@ class Landing extends Component {
     }
 
     render(){
-
-        let modal = null;
-        if(this.state.showModal){
-            modal = (
+        return(
+            <div>
+                <TopBar 
+                    onClick={() => this.closeTopBar()}
+                    show={this.state.showTopBar}
+                    error={this.state.error}
+                    message={this.state.message}/>
                 <Modal 
+                    show={this.state.showModal}
                     options={this.state.channelList}
                     onClick={()=>this.toggleModal()}
                     onChange={(name) => this.handleChange(name)}
                     onSubmit={() => this.handleSubmit()}
                     disabled={this.state.selectedChannel === 'select'}/>
-            );
-        }
-
-        let dropbar = null;
-        if(this.state.showDropBar){
-            dropbar = <DropBar onClick={() => this.handleDropbarOnclick()}/>
-        }
-        return(
-            <div>
-                {dropbar}
-                {modal}
                 <header>
                     <span className='loop11__logo'>
                         <img src='res/logo/loop-11-logo-green-copy.svg' alt='palcare logo'/>
