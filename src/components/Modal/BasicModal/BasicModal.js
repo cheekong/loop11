@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../UI/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './Modal.css';
+import './BasicModal.css';
 
 class Modal extends Component {
 
@@ -38,7 +38,7 @@ class Modal extends Component {
             })
         }
 
-        let modalClassName = ['share-vid-modal'];
+        let modalClassName = ['basic-modal'];
         
         if(this.state.reserve){
             modalClassName.push('reserve');
@@ -50,13 +50,13 @@ class Modal extends Component {
         modalClassName = modalClassName.join(' ');
         return (
             <div className={modalClassName}>
-                <div className='share-vid-modal__window'>
-                    <div className='share-vid-modal__container '>
-                        <div className='share-vid-modal__header'>
-                            <h2 className='share-vid-modal__heading'>{this.props.title}</h2>
-                            <p className='share-vid-modal__cancel' onClick={() => this.reserveModal()}><FontAwesomeIcon icon="times" /></p>
+                <div className='basic-modal__window'>
+                    <div className='basic-modal__container '>
+                        <div className='basic-modal__header'>
+                            <h2 className='basic-modal__heading'>{this.props.title}</h2>
+                            <p className='basic-modal__cancel' onClick={() => this.reserveModal()}><FontAwesomeIcon icon="times" /></p>
                         </div>
-                        <div className='share-vid-modal__body'>
+                        <div className='basic-modal__body'>
                             <div className='share-vid-modal__description'>
                                 <h3>{this.props.subtitle}</h3>
                                 <p >

@@ -13,7 +13,7 @@ class Landing extends Component {
         channelList: [],
         selectedChannel: 'select',
         error: false,
-        message: null,
+        message: '',
         success: false,
         showTopBar: false
     }
@@ -37,12 +37,12 @@ class Landing extends Component {
     }
 
     handleSubmit(){
+        this.toggleModal()
         api.shareToChannel(this.state.selectedChannel)
         .then(res => {
             if(res.status === 200 && res.data.statusCode === 200){
                 this.setState({
                     success: true, 
-                    //showModal: false,
                     selectedChannel: 'select',
                     error: false,
                     message: 'Video clip shared with Slack!',
@@ -60,7 +60,6 @@ class Landing extends Component {
         })
         .catch( err => {
             alert('Fatal error');
-
         })
     }
 
@@ -88,6 +87,8 @@ class Landing extends Component {
                     message={this.state.message}/>
                 <Modal 
                     show={this.state.showModal}
+                    title='Share video clip'
+                    subtitle='Select a slack channel'
                     options={this.state.channelList}
                     onClick={()=>this.toggleModal()}
                     onChange={(name) => this.handleChange(name)}

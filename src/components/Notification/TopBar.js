@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './TopBar.css';
 
@@ -50,6 +51,13 @@ class TopBar extends Component{
         }
         return topBar;
     }
+}
+
+TopBar.propTypes = {
+    show: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+    message: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 }
 
 export default TopBar;

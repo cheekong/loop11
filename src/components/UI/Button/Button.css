@@ -7,6 +7,10 @@
     color: #ffffff;
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
 .button.regular{
     width: 300px;
     height: 46px;

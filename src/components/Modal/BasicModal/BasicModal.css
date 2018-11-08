@@ -16,7 +16,7 @@
       }
 }
 
-.share-vid-modal {
+.basic-modal {
     background-color: #0000009e;
     z-index: 9998;
     position: absolute;
@@ -29,11 +29,11 @@
     animation-fill-mode: forwards;
 }
 
-.share-vid-modal.reserve {
+.basic-modal.reserve {
     animation-name: share-vid-modalFadeReserve;
 }
 
-.share-vid-modal__window {
+.basic-modal__window {
     width: 400px;
     height: 341px;
     border-radius: 2px;
@@ -41,19 +41,19 @@
     margin: 20vh auto;
 }
 
-.share-vid-modal__container {
+.basic-modal__container {
     width: 100%;
     height: 100%;
 }
 
-.share-vid-modal__header {
+.basic-modal__header {
     background-color: #ffffff;
     border-bottom: 1px solid #dddddd;
     height: 68px;
     width: 100%;
 }
 
-.share-vid-modal__heading{
+.basic-modal__heading{
     width: 141px;
     height: 20px;
     font-family: Lato;
@@ -65,7 +65,7 @@
     padding-left: 20px;
 }
 
-.share-vid-modal__cancel{
+.basic-modal__cancel{
     width: 13px;
     height: 16px;
     font-size: 20px;
@@ -75,11 +75,11 @@
     padding-right: 20px;
 }
 
-.share-vid-modal__cancel:hover {
+.basic-modal__cancel:hover {
     cursor: pointer;
 }
 
-.share-vid-modal__body {
+.basic-modal__body {
     width: 400px;
     height: 272px;
     background-color: #f7f7f7;
