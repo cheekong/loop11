@@ -6,30 +6,39 @@ import './BasicModal.css';
 class Modal extends Component {
 
     state = {
+        show: false,
         isOpen: false,
         reserve: false
     }
 
-    reserveModal(){
-        this.props.onClick();
-        /*
-        this.setState({reserve: true});
-        setTimeout(()=>{
-            this.props.onClick();
-            this.setState({
-                isOpen: false, 
-                reserve: false
-            })
-        }, 200);
-        */
+    closeModal(){
+        this.props.onClose();
+        this.setState({show: false})
     }
 
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps, prevState){
         if(this.props.show && !prevProps.show){
-            this.setState({isOpen: true});
+            this.setState({
+                show: true, 
+                isOpen: true
+            });
         }
 
         if(!this.props.show && prevProps.show){
+            this.setState({show: false});
+        }
+
+       if(!this.props.show && prevProps.show){
+            this.setState({reserve: true});
+            setTimeout(()=>this.setState({
+                isOpen: false, 
+                reserve: false
+                }), 
+                300
+            );
+        }
+
+        if(prevState.show && !this.state.show){
             this.setState({reserve: true});
             setTimeout(()=>this.setState({
                 isOpen: false, 
@@ -57,7 +66,7 @@ class Modal extends Component {
                         <div className='basic-modal__header'>
                             <h2 className='basic-modal__heading'>{this.props.title}</h2>
                             <p className='basic-modal__cancel' 
-                                onClick={() => this.reserveModal()}>
+                                onClick={() => this.closeModal()}>
                                 <FontAwesomeIcon icon="times" />
                             </p>
                         </div>
@@ -72,13 +81,10 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-    disabled: PropTypes.bool.isRequired,
     show: PropTypes.bool.isRequired,
-    onChange: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
-    options:  PropTypes.arrayOf(PropTypes.object).isRequired,
+    //props.children
 }
 
 export default Modal;

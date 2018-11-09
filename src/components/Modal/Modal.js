@@ -7,8 +7,23 @@ import './Modal.css';
 
 class Modal extends Component {
 
+    state = {
+        show: false
+    }
+
     handleSubmit(){
         this.props.onSubmit();
+        this.setState({submitted: true});
+    }
+
+    componentDidUpdate(prevProps){
+        if(!prevProps.show && this.props.show){
+            this.setState({show: true});
+        }
+
+        if(prevProps.show && !this.props.show){
+            this.setState({show: false});
+        }
     }
 
     render(){
@@ -23,9 +38,9 @@ class Modal extends Component {
 
         return (
             <BasicModal
-                show={this.props.show}
+                show={this.state.show}
                 title={this.props.title}
-                onClick={this.props.onClick}>
+                onClose={this.props.onClose}>
                 <div className='share-vid-modal__description'>
                     <h3>{this.props.subtitle}</h3>
                     <p >To Share this clip, add email addresses separated by commas, then click 'Send'.</p>
@@ -33,11 +48,11 @@ class Modal extends Component {
                         <span className='video-clip-description'>Projects0001 Report / Task 2 / </span> 
                         <span className='participant-description'>Partcipants 4</span>
                         <br />
-                        
                         <span className='font-awesome-icon'><FontAwesomeIcon icon="video" /></span>
-                        <span className='participant-description'>Start:</span><span className='video-clip-description'>2:30    </span>   
-                        <span className='participant-description'>End</span> 
-                        <span className='video-clip-description'> 2:30</span>
+                        <span className='start-label'>Start</span>
+                        <span className='start-time'>2:30</span>   
+                        <span className='end-label'>End</span> 
+                        <span className='end-time'>2:30</span>
                     </p>
                 </div>
                 <div className='share-vid-modal__cta'>

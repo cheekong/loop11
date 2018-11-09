@@ -18,11 +18,18 @@ class Landing extends Component {
         showTopBar: false
     }
 
-    toggleModal(){
+    showModal(){
         this.setState({
-            showModal: !this.state.showModal
+            showModal: true
         })
     }
+
+    closeModal(){
+        this.setState({
+            showModal: false
+        })
+    }
+
 
     handleChange(name){
         this.setState({
@@ -37,7 +44,6 @@ class Landing extends Component {
     }
 
     handleSubmit(){
-        //this.toggleModal()
         api.shareToChannel(this.state.selectedChannel)
         .then(res => {
             if(res.status === 200 && res.data.statusCode === 200){
@@ -91,7 +97,7 @@ class Landing extends Component {
                     title='Share video clip'
                     subtitle='Select a slack channel'
                     options={this.state.channelList}
-                    onClick={()=>this.toggleModal()}
+                    onClose={()=>this.closeModal()}
                     onChange={(name) => this.handleChange(name)}
                     onSubmit={() => this.handleSubmit()}
                     disabled={this.state.selectedChannel === 'select'}/>
@@ -101,7 +107,7 @@ class Landing extends Component {
                     </span>
                 </header>
                 <div className='cta__center'>
-                    <Button label='Click' onClick={()=>this.toggleModal()}/>
+                    <Button label='Click' onClick={()=>this.showModal()}/>
                 </div>
                 
             </div>
