@@ -7,33 +7,14 @@ import './Modal.css';
 
 class Modal extends Component {
 
-    state = {
-        reserve: false
-    }
-
-    reserveModal(){
-        this.setState({reserve: true});
-        setTimeout(()=>{
-            this.props.onClick();
-            this.setState({
-                reserve: false
-            })
-        }, 300);
-    }
-
     handleSubmit(){
-        this.setState({reserve: true});
-        setTimeout(()=>{
-            this.props.onSubmit();
-            this.setState({reserve: false});
-        }, 300);
+        this.props.onSubmit();
     }
 
     render(){
         let options = [];
         if(this.props.options.length){
             options = this.props.options.map((optionItem, idx) => {
-console.log('optionItem',optionItem);
                 return(
                     <option key={optionItem.name + idx} value={optionItem.name}>#{optionItem.label}</option>
                 )
@@ -44,9 +25,7 @@ console.log('optionItem',optionItem);
             <BasicModal
                 show={this.props.show}
                 title={this.props.title}
-                onClick={this.props.onClick}
-                onSubmit={() => this.handleSubmit()}
-                reverse={this.state.reserve}>
+                onClick={this.props.onClick}>
                 <div className='share-vid-modal__description'>
                     <h3>{this.props.subtitle}</h3>
                     <p >To Share this clip, add email addresses separated by commas, then click 'Send'.</p>
@@ -56,8 +35,7 @@ console.log('optionItem',optionItem);
                         <br />
                         
                         <span className='font-awesome-icon'><FontAwesomeIcon icon="video" /></span>
-                        <span className='participant-description'>Start:</span> 
-                        <span className='video-clip-description'>2:30    </span>
+                        <span className='participant-description'>Start:</span><span className='video-clip-description'>2:30    </span>   
                         <span className='participant-description'>End</span> 
                         <span className='video-clip-description'> 2:30</span>
                     </p>

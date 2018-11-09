@@ -1,44 +1,55 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../UI/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './BasicModal.css';
 
 class Modal extends Component {
 
     state = {
+        isOpen: false,
         reserve: false
     }
 
     reserveModal(){
+        this.props.onClick();
+        /*
         this.setState({reserve: true});
         setTimeout(()=>{
             this.props.onClick();
             this.setState({
+                isOpen: false, 
                 reserve: false
             })
-        }, 300);
+        }, 200);
+        */
     }
 
-    handleSubmit(){
-        this.setState({reserve: true});
-        setTimeout(()=>{
-            this.props.onSubmit();
-            this.setState({reserve: false});
-        }, 300);
+    componentDidUpdate(prevProps){
+        if(this.props.show && !prevProps.show){
+            this.setState({isOpen: true});
+        }
+
+        if(!this.props.show && prevProps.show){
+            this.setState({reserve: true});
+            setTimeout(()=>this.setState({
+                isOpen: false, 
+                reserve: false
+                }), 
+                300
+            );
+        }
     }
 
     render(){
         let modalClassName = ['basic-modal'];
-        
-        if(this.state.reserve || this.props.reserve){
+        if(this.state.reserve){
             modalClassName.push('reserve');
         }
-        
-        if(!this.props.show){
+        if(!this.state.isOpen){
             modalClassName.push('inactive');
         }
         modalClassName = modalClassName.join(' ');
+
         return (
             <div className={modalClassName}>
                 <div className='basic-modal__window'>
@@ -54,7 +65,6 @@ class Modal extends Component {
                             {this.props.children}
                         </div>
                     </div>
-                    
                 </div>
             </div>
         );

@@ -37,12 +37,13 @@ class Landing extends Component {
     }
 
     handleSubmit(){
-        this.toggleModal()
+        //this.toggleModal()
         api.shareToChannel(this.state.selectedChannel)
         .then(res => {
             if(res.status === 200 && res.data.statusCode === 200){
                 this.setState({
                     success: true, 
+                    showModal: false,
                     selectedChannel: 'select',
                     error: false,
                     message: 'Video clip shared with Slack!',
