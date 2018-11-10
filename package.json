@@ -32,6 +32,8 @@
   ],
   "proxy": "https://test-api.loop11.com/",
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "lato-font": "^3.0.0"
   }
 }

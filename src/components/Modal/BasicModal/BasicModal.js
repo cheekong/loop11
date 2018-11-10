@@ -28,23 +28,13 @@ class Modal extends Component {
             this.setState({show: false});
         }
 
-       if(!this.props.show && prevProps.show){
-            this.setState({reserve: true});
-            setTimeout(()=>this.setState({
-                isOpen: false, 
-                reserve: false
-                }), 
-                300
-            );
-        }
-
         if(prevState.show && !this.state.show){
             this.setState({reserve: true});
             setTimeout(()=>this.setState({
                 isOpen: false, 
                 reserve: false
                 }), 
-                300
+                200
             );
         }
     }
@@ -82,8 +72,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
     show: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
     //props.children
 }
 

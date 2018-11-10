@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../../components/UI/Button/Button';
-import Modal from '../../components/Modal/Modal';
+import VideoShareModal from '../../components/Modal/VideoShareModal/VideoShareModal';
 import TopBar from '../../components/Notification/TopBar';
 import * as api from '../../utilities/api';
 //import Logo from 'res/logo/loop-11-logo-green-copy.svg';
@@ -15,7 +15,13 @@ class Landing extends Component {
         error: false,
         message: '',
         success: false,
-        showTopBar: false
+        showTopBar: false,
+        videoDetails: {
+            description: 'Projects0001 Report / Task 2 / ',
+            participants: 4,
+            start: '2:30',
+            end: '2:30'
+        }
     }
 
     showModal(){
@@ -92,9 +98,13 @@ class Landing extends Component {
                     show={this.state.showTopBar}
                     error={this.state.error}
                     message={this.state.message}/>
-                <Modal 
+                <VideoShareModal 
+                    description={this.state.videoDetails.description}
+                    participants={this.state.videoDetails.participants}
+                    start={this.state.videoDetails.start}
+                    end={this.state.videoDetails.end}
                     show={this.state.showModal}
-                    title='Share video clip'
+                    title=''
                     subtitle='Select a slack channel'
                     options={this.state.channelList}
                     onClose={()=>this.closeModal()}

@@ -4,8 +4,10 @@ import './Button.css';
 
 const Button = (props) => {
     let className = ['button'];
+    let buttonType = 'button';
     if(props.modifier && props.modifier === 'modal'){
         className.push('modal');
+        buttonType = 'submit'
     } else {
         className.push('regular');
     }
@@ -20,7 +22,7 @@ const Button = (props) => {
             disabled={props.disabled}
             onClick={props.onClick}
             className={className}
-            type='button' 
+            type={buttonType}
             value={props.label}/>
     )
     
@@ -28,7 +30,14 @@ const Button = (props) => {
 
 Button.propTypes = {
     disabled: PropTypes.bool,
-    onClick: PropTypes.func.isRequired,
+    //onClick: PropTypes.func.isRequired,
+    onClick: (props, propName) => {
+        if(!props.modifier && (props[propName] === undefined || typeof(props[propName]) !== 'function')){
+            return new Error(
+                'onClick is required for button'
+            )
+        }
+    },
     label: PropTypes.string.isRequired
 }
 export default Button;
