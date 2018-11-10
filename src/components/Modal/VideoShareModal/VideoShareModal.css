@@ -1,8 +1,8 @@
-.share-vid-modal__cta {
+.video-share-modal__cta {
     text-align: center;
 }
 
-.share-vid-modal__description {
+.video-share-modal__description {
     width: 300px;
     line-height: 1.5;
     color: #333333;

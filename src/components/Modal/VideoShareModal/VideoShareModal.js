@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../UI/Button/Button';
+
+import Button from '../../Button/Button';
 import BasicModal from '../BasicModal/BasicModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './VideoShareModal.css';
@@ -31,7 +32,11 @@ class Modal extends Component {
         if(this.props.options.length){
             options = this.props.options.map((optionItem, idx) => {
                 return(
-                    <option key={optionItem.name + idx} value={optionItem.name}>#{optionItem.label}</option>
+                    <option 
+                        key={optionItem.name + idx} 
+                        value={optionItem.name}>
+                        #{optionItem.label}
+                    </option>
                 )
             })
         }
@@ -42,7 +47,7 @@ class Modal extends Component {
                 title='Share video clip'
                 onClose={this.props.onClose}>
                 <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <div className='share-vid-modal__description'>
+                    <div className='video-share-modal__description'>
                         <h3>Select a slack channel</h3>
                         <p>To Share this clip, add email addresses separated by commas, then click 'Send'.</p>
                         <p>
@@ -56,8 +61,9 @@ class Modal extends Component {
                             <span className='end-time'>{this.props.end}</span>
                         </p>
                     </div>
-                    <div className='share-vid-modal__cta'>
+                    <div className='video-share-modal__cta'>
                         <select className='select'
+                            value={this.props.value}
                             onChange={(event) => this.props.onChange(event.target.value)}>
                             <option value='select'>Select</option>
                             {options}

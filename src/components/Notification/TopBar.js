@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './TopBar.css';
 
@@ -21,13 +22,13 @@ class TopBar extends Component{
         let topBar = null;
         if(this.props.show){
 
-            let className = ['topbar'];
+            let className = ['top-bar'];
             if(this.state.reserve){
                 className.push('reserve');
             }
             className = className.join(' ');
 
-            let statusClassName = ['topbar__content'];
+            let statusClassName = ['top-bar__content'];
             let icon = <FontAwesomeIcon icon="check-circle" />;;
             if(this.props.error){
                 statusClassName.push('error');
@@ -40,10 +41,10 @@ class TopBar extends Component{
             topBar = (
                 <div className={className}>
                     <div className={statusClassName}>
-                        <p className='topbar__body'>
-                            <span className='topbar__icon'>{icon}</span>
-                            <span className='topbar__message'>{this.props.message}</span>
-                            <span className='topbar__close' onClick={() => this.handleClose()}><FontAwesomeIcon icon="times" /></span>
+                        <p className='top-bar__body'>
+                            <span className='top-bar__icon'>{icon}</span>
+                            <span className='top-bar__message'>{this.props.message}</span>
+                            <span className='top-bar__close' onClick={() => this.handleClose()}><FontAwesomeIcon icon="times" /></span>
                         </p>
                     </div>
                 </div>

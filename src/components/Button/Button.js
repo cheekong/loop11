@@ -30,7 +30,6 @@ const Button = (props) => {
 
 Button.propTypes = {
     disabled: PropTypes.bool,
-    //onClick: PropTypes.func.isRequired,
     onClick: (props, propName) => {
         if(!props.modifier && (props[propName] === undefined || typeof(props[propName]) !== 'function')){
             return new Error(

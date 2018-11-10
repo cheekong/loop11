@@ -30,3 +30,7 @@
 .button--inactive {
     opacity: 0.5;
 }
+
+.button--inactive:hover {
+    cursor: not-allowed;
+}

@@ -12,9 +12,9 @@ describe('TopBar tests', () => {
 
         const wrapper = shallow(<TopBar message={message} error={error} show={show} onClick={onClick}/>)
 
-        expect(wrapper.find('.topbar__message').text()).toEqual(message);
-        expect(wrapper.find('.topbar__message')).toHaveLength(1);
-        expect(wrapper.find('.topbar__close')).toBeDefined();
+        expect(wrapper.find('.top-bar__message').text()).toEqual(message);
+        expect(wrapper.find('.top-bar__message')).toHaveLength(1);
+        expect(wrapper.find('.top-bar__close')).toBeDefined();
         expect(wrapper.find('.success')).toHaveLength(1);
     })
 
@@ -26,8 +26,8 @@ describe('TopBar tests', () => {
 
         const wrapper = shallow(<TopBar message={message} error={error} show={show} onClick={() => onClick()}/>)
 
-        expect(wrapper.find('.topbar__message').text()).toEqual(message);
-        expect(wrapper.find('.topbar__message')).toHaveLength(1);
+        expect(wrapper.find('.top-bar__message').text()).toEqual(message);
+        expect(wrapper.find('.top-bar__message')).toHaveLength(1);
         expect(wrapper.find('.error')).toHaveLength(1);
     })
 })

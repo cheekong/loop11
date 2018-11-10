@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './BasicModal.css';
 
@@ -17,6 +18,10 @@ class Modal extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
+        /* 
+            the idea of the basic modal is to be as abstract and stand alone possible
+            as it has it's own way of flow for closing and appearing i.e fade in and fade out.
+        */
         if(this.props.show && !prevProps.show){
             this.setState({
                 show: true, 
@@ -73,7 +78,6 @@ class Modal extends Component {
 Modal.propTypes = {
     show: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired
-    //props.children
 }
 
 export default Modal;

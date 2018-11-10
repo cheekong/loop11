@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Button from '../../components/UI/Button/Button';
+
+import Button from '../../components/Button/Button';
 import VideoShareModal from '../../components/Modal/VideoShareModal/VideoShareModal';
 import TopBar from '../../components/Notification/TopBar';
 import * as api from '../../utilities/api';
-//import Logo from 'res/logo/loop-11-logo-green-copy.svg';
 import './Dashboard.css';
 
 class Landing extends Component {
@@ -35,7 +35,6 @@ class Landing extends Component {
             showModal: false
         })
     }
-
 
     handleChange(name){
         this.setState({
@@ -104,12 +103,11 @@ class Landing extends Component {
                     start={this.state.videoDetails.start}
                     end={this.state.videoDetails.end}
                     show={this.state.showModal}
-                    title=''
-                    subtitle='Select a slack channel'
                     options={this.state.channelList}
                     onClose={()=>this.closeModal()}
                     onChange={(name) => this.handleChange(name)}
                     onSubmit={() => this.handleSubmit()}
+                    value={this.state.selectedChannel}
                     disabled={this.state.selectedChannel === 'select'}/>
                 <header>
                     <span className='loop11__logo'>

@@ -1,4 +1,4 @@
-@keyframes topbarFade {
+@keyframes top-bar--fade {
     from {
         transform: translateY(-50%);
         opacity: 0;
@@ -9,7 +9,7 @@
       }
   }
 
-@keyframes topbarReserve {
+@keyframes top-bar--reserve {
     from {
         transform: translateY(0);
         opacity: 1;
@@ -20,20 +20,20 @@
       }
 }
 
-.topbar {
+.top-bar {
     z-index: 9999;
     position: absolute;
     width: 100%;
-    animation-name: topbarFade;
+    animation-name: top-bar--fade;
     animation-duration: .3s;
     animation-fill-mode: forwards;
 }
 
-.topbar.reserve {
-    animation-name: topbarReserve;
+.top-bar.reserve {
+    animation-name: top-bar--reserve;
 }
 
-.topbar__content {
+.top-bar__content {
     width: 840px;
     height: 60px;
     border-radius: 0 0 8px 8px;
@@ -41,33 +41,33 @@
     margin: 0 auto;
 }
 
-.topbar__content.success {
+.top-bar__content.success {
     border: solid 1px #2cbf9d;
     background-color: #eafff6;
     color: #2cbf9d;
 }
 
-.topbar__content.error {
+.top-bar__content.error {
     border: solid 1px #bf2c2c;
     background-color: #ffeaf1;
     color: #bf2c2c;
 }
 
 
-.topbar__body {
+.top-bar__body {
     line-height: 2;
     text-align: center;
 }
 
-.topbar__icon {
+.top-bar__icon {
     margin-right: 5px;
 }
 
-.topbar__close {
+.top-bar__close {
     float: right;
     text-indent: -60px;
 }
 
-.topbar__close:hover {
+.top-bar__close:hover {
     cursor: pointer;
 }
